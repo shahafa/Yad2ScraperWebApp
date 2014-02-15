@@ -4,7 +4,7 @@
  */
 
 var express = require('express');
-var adsApi = require('./routes/adsApi.js')
+var adsApi = require('./routes/adsApi.js');
 var http = require('http');
 var path = require('path');
 var app = express();
@@ -31,6 +31,8 @@ if ('development' == app.get('env')) {
 
 
 app.get('/api/ads', adsApi.ads);
+app.get('/api/adIsRelevant/:id', adsApi.isRelevant);
+app.get('/api/adIsNotRelevant/:id', adsApi.isNotRelevant);
 app.get('/', function(req, res) {
 	res.sendfile('./public/index.html');
 });
